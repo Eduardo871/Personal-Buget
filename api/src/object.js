@@ -1,6 +1,7 @@
 export class App {
-    constructor(app){
+    constructor(app, Router){
         this.app = app;
+        this.Router = Router;
     }
     start(sequelize){
         sequelize.sync({force: false})
@@ -9,7 +10,7 @@ export class App {
         })
     }
     createRoute(method, route, controller){
-        app[method](route, controller)
+        this.app[method](route, controller);
     } 
     createMiddleware(middleware){
         this.app.use(middleware);
