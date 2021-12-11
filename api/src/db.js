@@ -3,13 +3,12 @@ import { DB } from "./object";
 import dotenv from "dotenv";
 import { indexModels } from "./models/index";
 dotenv.config();
-const {URL} = process.env;
-
+const {DB_URL} = process.env;
 
 
 // se crea una instancia de sequelize y 
 // se crea una instancia de la clase DB.
-const sequelize = new Sequelize(URL,{
+const sequelize = new Sequelize(DB_URL,{
     logging: false,
     native: false
 });

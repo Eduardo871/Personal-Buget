@@ -1,9 +1,9 @@
-import {STRING, INTEGER, ENUM} from "sequelize";
+import {STRING, INTEGER, ENUM, DATE} from "sequelize";
 
 export const operation = (db) => {
-    db.createModel('operation', {
+    return db.createModel('operation', {
         type: {
-            type: ENUM("income, expense"),
+            type: ENUM("income", "expense"),
             allowNull: false,
         },
         concept: {
@@ -19,6 +19,10 @@ export const operation = (db) => {
                 msg: 'The number must be greater than or equal to one'
             }
             }
+        },
+        date: {
+            type: DATE,
+            allowNull: false
         }
     })
 }

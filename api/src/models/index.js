@@ -12,6 +12,7 @@ export const indexModels = (db) => {
             functionModels.push(require(`${path}/${element}`)[nameModel](db))
         }
     }
+    db.setModel(functionModels);
     
         
 }

@@ -1,7 +1,7 @@
 import {STRING, INTEGER, ENUM} from "sequelize";
 
 export const user = (db) => {
-    db.createModel('user', {
+    return db.createModel('user', {
         fullname: {
             type: STRING,
             allowNull: false,
