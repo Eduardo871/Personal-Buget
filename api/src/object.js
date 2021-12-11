@@ -6,7 +6,7 @@ export class App {
     start(sequelize){
         sequelize.sync({force: false})
         .then (() => {
-            this.app.listen(3000, console.log("Listen to port 3000"))
+            this.app.listen(3001, console.log("Listen to port 3001"))
         })
     }
     createRoute(method, route, controller){
@@ -21,13 +21,20 @@ export class App {
 export class DB {
     constructor(sequelize){
         this.sequelize = sequelize;
+        this.models = [];
     }
     async createModel(nameModel, attributesModel){
         const model = await this.sequelize.define(nameModel, attributesModel);
         return model;
     }
-    getModel(nameModel){
-         return this.sequelize.models[nameModel]
+    setModel(models){
+         this.models = models;
+    }
+    getAllModels(){
+        return this.models;
+    }
+    getModel(name){
+        return this.sequelize.models[name]
     }
     getConection(){
         return  this.sequelize;
