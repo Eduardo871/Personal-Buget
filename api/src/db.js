@@ -17,7 +17,16 @@ export const db = new DB(sequelize);
 // los modelos
 indexModels(db);
 
+// Create relationship 
 
+//-------- relation one to many (category and operation) --------
+
+db.getModel('category').hasMany(db.getModel('operation'));
+db.getModel('operation').belongsTo(db.getModel('category'));
+
+//-------- relation one to many (user and operation) --------
+
+// db.getModel('user')
 
 
 // exportamos la base de datos
